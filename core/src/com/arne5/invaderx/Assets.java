@@ -6,20 +6,27 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 public class Assets
 {
-    public static Texture texture_background;
-    public static Sprite sprite_background;
+    public static Texture textureBackground;
+    public static Sprite spriteBackground;
+    public static Texture textureSplash;
+    public static Sprite spriteSplash;
 
     public static void Load()
     {
 
 
         //background
-        texture_background = new Texture("darkPurple960600.png");
-        texture_background.setFilter(TextureFilter.Linear,TextureFilter.Linear);
-        sprite_background = new Sprite(texture_background);
+        textureBackground = new Texture("darkPurple960600.png");
+        textureBackground.setFilter(TextureFilter.Linear,TextureFilter.Linear);
+        spriteBackground = new Sprite(textureBackground);
         //to set 0 in image to bottom?
-        sprite_background.flip(false,true);
+        spriteBackground.flip(false,true);
 
+        //splash screen
+        textureSplash = new Texture("splash.png");
+        textureSplash.setFilter(TextureFilter.Linear,TextureFilter.Linear);
+        spriteSplash = new Sprite(textureSplash);
+        spriteSplash.flip(false,true);
 
     }
 
