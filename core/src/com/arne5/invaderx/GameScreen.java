@@ -42,6 +42,9 @@ public class GameScreen implements Screen
         batch.begin();
         //rendering code
         batch.draw(Assets.spriteBackground,0,0);
+
+        //draw from packed textureatlas
+        batch.draw(Assets.shipGreen,50,50,25,25);
         //draw from texture sheettest
        // batch.draw(Assets.spriteRed,256,256);
        // batch.draw(Assets.spriteBlue,512,512);

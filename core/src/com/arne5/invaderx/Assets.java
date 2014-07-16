@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+
 public class Assets
 {
     public static Texture textureBackground;
@@ -16,8 +18,20 @@ public class Assets
     public static Sprite spriteBlue;
     public static Sprite spriteYellow;
     public static Sprite spriteGreen;
+    public static Sprite shipGreen;
+
+    public static TextureAtlas atlas;
     public static void Load()
     {
+
+
+
+        //use texture atlas for my images
+        atlas = new TextureAtlas("pack.atlas");
+        //try and load and draw from atlas
+        shipGreen = atlas.createSprite("playerShip1_green");
+        shipGreen.flip(false,true);
+
 
 
         //background
