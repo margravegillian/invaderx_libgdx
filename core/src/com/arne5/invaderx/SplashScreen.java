@@ -46,6 +46,10 @@ public class SplashScreen implements Screen
         if(Gdx.input.justTouched())
             {
                 //start the gamescreen change to menu screen later
+	            if(Assets.titleMusic.isPlaying())
+		            {
+			            Assets.titleMusic.stop();
+		            }
                 game.setScreen(game.gameScreen);
 
             }
@@ -62,7 +66,7 @@ public class SplashScreen implements Screen
     @Override
     public void show()
     {
-
+		Assets.titleMusic.play();
     }
 
     @Override
