@@ -35,6 +35,7 @@ public class SplashScreen implements Screen
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         camera.update();
+
         batch.setProjectionMatrix(camera.combined);
 
         batch.begin();
@@ -56,6 +57,8 @@ public class SplashScreen implements Screen
 
 
     }
+
+
 
     @Override
     public void resize(int width, int height)
