@@ -22,7 +22,8 @@ public class SplashScreen implements Screen
      {
          this.game=game;
          camera = new OrthographicCamera();
-         camera.setToOrtho(true,960,600);
+         camera.setToOrtho(true,800,480);
+	     //camera.setToOrtho(true,960,600);
          batch = new SpriteBatch();
 
 

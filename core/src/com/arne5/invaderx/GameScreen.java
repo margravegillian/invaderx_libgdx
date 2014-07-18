@@ -32,13 +32,14 @@ public class GameScreen implements Screen
 				this.game = game;
 
 				camera = new OrthographicCamera();
-				camera.setToOrtho(true, 960, 600);
+				camera.setToOrtho(true, 800, 480);
+				//camera.setToOrtho(true, 960, 600);
 				batch = new SpriteBatch();
 
 				screenHeight= Gdx.graphics.getHeight();
-				//screenHeight = 600;
+				//screenHeight = 800;
 				screenWidth = Gdx.graphics.getWidth();
-				//screenWidth = 960;
+				//screenWidth = 480;
 				playerShip = new Sprite(Assets.shipGreen);
 				playerShipHeight = playerShip.getHeight();
 
