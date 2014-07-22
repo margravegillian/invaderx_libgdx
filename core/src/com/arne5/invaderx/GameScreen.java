@@ -20,7 +20,8 @@ public class GameScreen implements Screen
 		float playerShipHeight;
 		float screenWidth;
 		float screenHeight;
-
+		int ANDROID_WIDTH = Gdx.graphics.getWidth();
+		int ANDROID_HEIGHT = Gdx.graphics.getHeight();
 
 		float playerShipSpeed;
 		private Sprite playerShip;
@@ -32,7 +33,8 @@ public class GameScreen implements Screen
 				this.game = game;
 
 				camera = new OrthographicCamera();
-				camera.setToOrtho(true, 800, 480);
+				camera.setToOrtho(true,ANDROID_WIDTH,ANDROID_HEIGHT);
+				// camera.setToOrtho(true, 800, 480);
 				//camera.setToOrtho(true, 960, 600);
 				batch = new SpriteBatch();
 
@@ -45,7 +47,7 @@ public class GameScreen implements Screen
 
 				playerShipWidth = playerShip.getWidth();
 				playerShip.setPosition(screenWidth/2-playerShipWidth/2,screenHeight-playerShipHeight);
-				playerShip.scale(-0.5f);
+				playerShip.scale(-1.5f);
 
 				playerShipSpeed = 10.0f;
 

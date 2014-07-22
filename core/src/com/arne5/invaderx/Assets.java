@@ -39,7 +39,7 @@ public class Assets
         atlas = new TextureAtlas("pack.atlas");
         //try and load and draw from atlas
         shipGreen = atlas.createSprite("playerShip1_green");
-        shipGreen.flip(false,true);
+        //shipGreen.flip(false,true);
 
 
 

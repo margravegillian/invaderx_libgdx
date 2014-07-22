@@ -14,6 +14,11 @@ public class SplashScreen implements Screen
    // private Game InvaderX;
     OrthographicCamera camera;
     SpriteBatch batch;
+	int ANDROID_WIDTH = Gdx.graphics.getWidth();
+	int ANDROID_HEIGHT = Gdx.graphics.getHeight();
+
+
+
 
 
 
@@ -22,7 +27,8 @@ public class SplashScreen implements Screen
      {
          this.game=game;
          camera = new OrthographicCamera();
-         camera.setToOrtho(true,800,480);
+         //camera.setToOrtho(true,800,480);
+	     camera.setToOrtho(true,ANDROID_WIDTH,ANDROID_HEIGHT);
 	     //camera.setToOrtho(true,960,600);
          batch = new SpriteBatch();
 

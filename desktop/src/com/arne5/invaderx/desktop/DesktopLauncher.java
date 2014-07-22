@@ -9,7 +9,7 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
     //add packing the textures when desktop runs
     TexturePacker.Settings settings = new TexturePacker.Settings();
-    TexturePacker.process(settings, "C:/Development/github/invaderx_libgdx/invaderximages","C:/Development/github/invaderx_libgdx/android/assets","pack");
+    //TexturePacker.process(settings, "C:/Development/github/invaderx_libgdx/invaderximages","C:/Development/github/invaderx_libgdx/android/assets","pack");
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		new LwjglApplication(new InvaderX(), config);
         config.title = "InvaderX";

@@ -12,11 +12,14 @@ public class InvaderX extends Game
     public void create()
         {
             //load all assets from assets class
+
             Assets.Load();
             gameScreen = new GameScreen(this);
             splashScreen = new SplashScreen(this);
             setScreen(splashScreen);
             //setScreen(gameScreen);
+
+
 
 
         }
