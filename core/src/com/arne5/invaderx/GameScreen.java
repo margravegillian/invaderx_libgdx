@@ -22,6 +22,7 @@ public class GameScreen implements Screen
 		float screenHeight;
 		int ANDROID_WIDTH = Gdx.graphics.getWidth();
 		int ANDROID_HEIGHT = Gdx.graphics.getHeight();
+		Vector3 touch;
 
 		float playerShipSpeed;
 		private Sprite playerShip;
@@ -50,6 +51,8 @@ public class GameScreen implements Screen
 				playerShip.scale(-1.5f);
 
 				playerShipSpeed = 10.0f;
+				//touch screen
+				touch = new Vector3();
 
 
 
@@ -69,7 +72,9 @@ public class GameScreen implements Screen
 
 
 				camera.update();
-				generalUpdate();
+
+				//movement etc
+				generalUpdate(touch,camera);
 
 				batch.setProjectionMatrix(camera.combined);
 
@@ -100,7 +105,7 @@ public class GameScreen implements Screen
 			}
 
 
-		public void generalUpdate()
+		public void generalUpdate(Vector3 touch, OrthographicCamera camera)
 			{
 
 				//Don't go off screen
@@ -113,20 +118,55 @@ public class GameScreen implements Screen
 					{
 						playerShip.setPosition(screenWidth-playerShipWidth,playerShip.getY());
 					}
+				if(playerShip.getY() <screenHeight-(playerShipHeight*2))
+					{
+						//don't let ship go above it self more than /2
+						playerShip.setPosition(playerShip.getX(),screenHeight- (playerShipHeight*2));
+					}
+				if(playerShip.getY() > screenHeight -playerShipHeight)
+					{
+						playerShip.setPosition(playerShip.getX(),screenHeight-playerShipHeight);
+						//playerShip.setPosition(playerShip.getX(),screenHeight-(playerShipHeight *2));
+
+					}
 				// move ship
-				if(Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed((Input.Keys.A)))
+				if(Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A))
 					{
 						playerShip.translateX(-playerShipSpeed);
 						//shipPosition.x -= 200 * Gdx.graphics.getDeltaTime() * playerShipSpeed;
 
 
 					}
-				else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed((Input.Keys.D)))
+				else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D))
 					{
 						playerShip.translateX(playerShipSpeed);
 						//shipPosition.x +=200 * Gdx.graphics.getDeltaTime() *playerShipSpeed;
 					}
+				if(Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W))
+					{
+						playerShip.translateY(-playerShipSpeed);
+					}
+				else if(Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S))
+					{
+						playerShip.translateY(playerShipSpeed);
+					}
 
+
+				//move ship touch not using this anyway need virtual buttons
+				if(Gdx.input.isTouched())
+					{
+						//touch.set(Gdx.input.getX(),Gdx.input.getY(),0);
+						//camera.unproject(touch);
+						//set position works but want it to move
+						//playerShip.setPosition(touch.x,touch.y);
+						//playerShip.translate(touch.x,touch.y);
+
+						//playerShip.translateX(touch.x);
+						//playerShip.translateY(touch.y);
+
+
+
+					}
 
 
 			}
