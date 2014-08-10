@@ -16,16 +16,14 @@ public class GameScreen implements Screen
 		private InvaderX game;
 		OrthographicCamera camera;
 		SpriteBatch batch;
-		float playerShipWidth;
-		float playerShipHeight;
+
 		float screenWidth;
 		float screenHeight;
 		int ANDROID_WIDTH = Gdx.graphics.getWidth();
 		int ANDROID_HEIGHT = Gdx.graphics.getHeight();
 		Vector3 touch;
 
-		//float playerShipSpeed;
-		//private Sprite playerShip;
+
 		Player player;
 
 
@@ -47,16 +45,14 @@ public class GameScreen implements Screen
 
 
 
-				//playerShipHeight = playerShip.getHeight();
-				//playerShipHeight = player.image.getHeight();
-				//playerShipWidth = playerShip.getWidth();
-				//playerShipWidth = player.image.getWidth();
+
 
 
 
 				//use player class now instead
 				player = new Player();
-				//player.shipSprite.setScale(-1.5f);
+
+
 
 				//player.bounds.setPosition(screenWidth/2-playerShipWidth/2,screenHeight-playerShipHeight);
 				//playerShip = new Sprite(Assets.shipGreen);
@@ -96,11 +92,13 @@ public class GameScreen implements Screen
 				batch.draw(Assets.spriteBackground, 0, 0);
 
 
-				//draw ship may use old way
-				//playerShip.draw(batch);
 
-				//draw player instead of ship now
+				//player.shipSprite.draw(batch); //this is right size though?
+
+				//draw player instead of ship now need to figure out how to make smaller
 				batch.draw(player.shipSprite,player.bounds.x,player.bounds.y);
+
+
 
 
 
@@ -178,7 +176,7 @@ public class GameScreen implements Screen
 				//	}
 
 
-				
+
 				//Don't go off screen old way with no player
 				/*if(playerShip.getX() < 0)
 					{
