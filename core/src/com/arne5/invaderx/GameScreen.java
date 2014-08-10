@@ -24,8 +24,9 @@ public class GameScreen implements Screen
 		int ANDROID_HEIGHT = Gdx.graphics.getHeight();
 		Vector3 touch;
 
-		float playerShipSpeed;
-		private Sprite playerShip;
+		//float playerShipSpeed;
+		//private Sprite playerShip;
+		Player player;
 
 
 		public GameScreen(InvaderX game)
@@ -43,14 +44,25 @@ public class GameScreen implements Screen
 				//screenHeight = 800;
 				screenWidth = Gdx.graphics.getWidth();
 				//screenWidth = 480;
-				playerShip = new Sprite(Assets.shipGreen);
-				playerShipHeight = playerShip.getHeight();
 
-				playerShipWidth = playerShip.getWidth();
-				playerShip.setPosition(screenWidth/2-playerShipWidth/2,screenHeight-playerShipHeight);
-				playerShip.scale(-1.5f);
 
-				playerShipSpeed = 10.0f;
+
+				//playerShipHeight = playerShip.getHeight();
+				//playerShipHeight = player.image.getHeight();
+				//playerShipWidth = playerShip.getWidth();
+				//playerShipWidth = player.image.getWidth();
+
+
+
+				//use player class now instead
+				player = new Player();
+				//player.image.setScale(-1.5f);
+
+				//player.bounds.setPosition(screenWidth/2-playerShipWidth/2,screenHeight-playerShipHeight);
+				//playerShip = new Sprite(Assets.shipGreen);
+				//playerShip.setPosition(screenWidth/2-playerShipWidth/2,screenHeight-playerShipHeight);
+				//playerShip.scale(-1.5f);
+				//playerShipSpeed = 10.0f;
 				//touch screen
 				touch = new Vector3();
 
@@ -84,8 +96,13 @@ public class GameScreen implements Screen
 				batch.draw(Assets.spriteBackground, 0, 0);
 
 
-				//draw ship
-				playerShip.draw(batch);
+				//draw ship may use old way
+				//playerShip.draw(batch);
+
+				//draw player instead of ship now
+				batch.draw(player.image,player.bounds.x,player.bounds.y);
+
+
 
 
 				//test
@@ -95,9 +112,7 @@ public class GameScreen implements Screen
 				//batch.draw(Assets.shipGreen,shipPosition.x ,shipPosition.y , 30, 30);
 
 
-				//draw from texture sheettest
-				// batch.draw(Assets.spriteRed,256,256);
-				// batch.draw(Assets.spriteBlue,512,512);
+
 
 				batch.end();
 
@@ -108,8 +123,54 @@ public class GameScreen implements Screen
 		public void generalUpdate(Vector3 touch, OrthographicCamera camera)
 			{
 
-				//Don't go off screen
-				if(playerShip.getX() < 0)
+				//new move ship with player ship
+
+				if(Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A))
+					{
+						player.bounds.x -=player.getSpeed();
+						//playerShip.translateX(-playerShipSpeed);
+						//shipPosition.x -= 200 * Gdx.graphics.getDeltaTime() * playerShipSpeed;
+
+
+					}
+				else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D))
+					{
+						player.bounds.x +=player.getSpeed();
+						//playerShip.translateX(playerShipSpeed);
+						//shipPosition.x +=200 * Gdx.graphics.getDeltaTime() *playerShipSpeed;
+					}
+				if(Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W))
+					{
+						player.bounds.y -=player.getSpeed();
+						//playerShip.translateY(-playerShipSpeed);
+					}
+				else if(Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S))
+					{
+						player.bounds.y +=player.getSpeed();
+						//playerShip.translateY(playerShipSpeed);
+					}
+
+				if(player.bounds.getX() <0)
+					{
+						player.bounds.x=0;
+					}
+
+				if(player.bounds.getX() >screenWidth -player.image.getWidth())
+					{
+						player.bounds.x= screenWidth-player.image.getWidth();
+					}
+
+				if(player.bounds.getY() <screenHeight-(player.image.getHeight()*2))
+				{
+					player.bounds.y = screenHeight -(player.image.getHeight()*2);
+				}
+
+				if(player.bounds.getY()> screenHeight - player.image.getHeight() )
+					{
+						player.bounds.y= screenHeight-player.image.getHeight();
+					}
+				//Don't go off screen old way with no player
+				/*if(playerShip.getX() < 0)
 					{
 						playerShip.setPosition(0,playerShip.getY());
 
@@ -150,7 +211,7 @@ public class GameScreen implements Screen
 					{
 						playerShip.translateY(playerShipSpeed);
 					}
-
+*/
 
 				//move ship touch not using this anyway need virtual buttons
 				if(Gdx.input.isTouched())
