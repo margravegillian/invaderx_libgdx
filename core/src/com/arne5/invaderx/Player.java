@@ -10,7 +10,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class Player
 
 	{
-		public Sprite image;
+		public Sprite shipSprite;
 		public Rectangle bounds;
 		private int speed;
 
@@ -28,10 +28,14 @@ public class Player
 		{
 
 			speed =10;
-			image = Assets.shipGreen;
-			image.flip(false,true);
+			//figure out
+			//shipSprite = Assets.shipGreen;
+			shipSprite = new Sprite(Assets.shipGreen);
+			shipSprite.flip(false,true);
+
+
 			//image.scale(-1.5f);
-			bounds = new Rectangle(Gdx.graphics.getWidth()-image.getWidth(),Gdx.graphics.getHeight()- image.getHeight(),Assets.shipGreen.getWidth(),Assets.shipGreen.getHeight());
+			bounds = new Rectangle(Gdx.graphics.getWidth()-shipSprite.getWidth(),Gdx.graphics.getHeight()- shipSprite.getHeight(),Assets.shipGreen.getWidth(),Assets.shipGreen.getHeight());
 			 //dont think this is right
 
 

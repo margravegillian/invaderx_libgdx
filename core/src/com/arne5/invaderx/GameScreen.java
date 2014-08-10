@@ -56,7 +56,7 @@ public class GameScreen implements Screen
 
 				//use player class now instead
 				player = new Player();
-				//player.image.setScale(-1.5f);
+				//player.shipSprite.setScale(-1.5f);
 
 				//player.bounds.setPosition(screenWidth/2-playerShipWidth/2,screenHeight-playerShipHeight);
 				//playerShip = new Sprite(Assets.shipGreen);
@@ -100,7 +100,7 @@ public class GameScreen implements Screen
 				//playerShip.draw(batch);
 
 				//draw player instead of ship now
-				batch.draw(player.image,player.bounds.x,player.bounds.y);
+				batch.draw(player.shipSprite,player.bounds.x,player.bounds.y);
 
 
 
@@ -155,20 +155,30 @@ public class GameScreen implements Screen
 						player.bounds.x=0;
 					}
 
-				if(player.bounds.getX() >screenWidth -player.image.getWidth())
+				if(player.bounds.getX() >screenWidth -player.shipSprite.getWidth())
 					{
-						player.bounds.x= screenWidth-player.image.getWidth();
+						player.bounds.x= screenWidth-player.shipSprite.getWidth();
 					}
 
-				if(player.bounds.getY() <screenHeight-(player.image.getHeight()*2))
+				if(player.bounds.getY() <screenHeight-(player.shipSprite.getHeight()*2))
 				{
-					player.bounds.y = screenHeight -(player.image.getHeight()*2);
+					player.bounds.y = screenHeight -(player.shipSprite.getHeight()*2);
 				}
 
-				if(player.bounds.getY()> screenHeight - player.image.getHeight() )
+				if(player.bounds.getY()> screenHeight - player.shipSprite.getHeight() )
 					{
-						player.bounds.y= screenHeight-player.image.getHeight();
+						player.bounds.y= screenHeight-player.shipSprite.getHeight();
 					}
+
+
+				//to make collision but not implemented yet
+				//if(player.bounds.overlaps())
+				//	{
+
+				//	}
+
+
+				
 				//Don't go off screen old way with no player
 				/*if(playerShip.getX() < 0)
 					{
